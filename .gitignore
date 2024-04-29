@@ -3,3 +3,6 @@
 .classpath
 out/*
 code.iml
+target/*
+*.xml
+.DS_Store

@@ -25,10 +25,10 @@ public class App {
     // char
     private static char myChar = 'A';
 
-    private static String randomString = "Hello World \n: are you kieran";
+    private static String randomString = "Hello World :\nare you kieran daffasdfafadsfa";
 
     char myChar2 = 'B';
-    
+
     public static void main(String[] args) {
         System.out.println(randomString);
     }

@@ -17,9 +17,7 @@ public class Fib {
 
             while (range <= 0) {
                 try {
-
                     range = UserNumberCheck.scanner.nextInt();
-
                 } catch (InputMismatchException e) {
                     System.out.println("Please enter a valid number");
                     UserNumberCheck.scanner.next(); // Clear the invalid input

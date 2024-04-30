@@ -24,7 +24,7 @@ public class NumberStore {
             System.out.println("1. Add a number");
             System.out.println("2. Display numbers");
             System.out.println("3. Exit");
-            choice = NextTen.scanner.nextInt();
+            choice = UserNumberCheck.scanner.nextInt();
 
             switch (choice) {
                 case 1:
@@ -32,7 +32,7 @@ public class NumberStore {
                         numbers = expandArray(numbers);
                     }
                     System.out.println("Enter a number:");
-                    numbers[index] = NextTen.scanner.nextInt();
+                    numbers[index] = UserNumberCheck.scanner.nextInt();
                     index++;
                     break;
                 case 2:

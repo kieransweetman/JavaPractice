@@ -1,6 +1,7 @@
 package fr.algo;
 
-import fr.algo.UserNumberCheck;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class FindTheNumber {
 
@@ -16,17 +17,20 @@ public class FindTheNumber {
     // trouvé en N coups » où N repré
 
     public static void main(String[] args) {
-        int input = getUserNumber();
+        Scanner scanner = new Scanner(System.in);
+        int nb = 0;
         int numberToFind = randomNumber();
         int moves = 0;
 
-        while (input != numberToFind) {
+        System.out.println("Enter a number between 1 and 100:");
+        while (nb != numberToFind) {
+            nb = getUserNumber(scanner);
 
-            if (input < numberToFind) {
+            if (nb < numberToFind) {
                 System.out.println("num is higher");
                 moves++;
                 continue;
-            } else if (input > numberToFind) {
+            } else if (nb > numberToFind) {
                 System.out.println("num is lower");
                 moves++;
                 continue;
@@ -38,15 +42,37 @@ public class FindTheNumber {
         }
 
         System.out.println("Congrats, you found the number in " + moves + " moves");
+        System.out.println("The number was: " + numberToFind);
+
+    }
+
+    public static int getUserNumber(Scanner scanner) {
+        int nb = 0;
+        do {
+            try {
+                nb = scanner.nextInt();
+
+                if (!check(nb)) {
+                    System.out.println(nb + " is not a between 1-100 number");
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter a valid number");
+                scanner.next(); // Clear the invalid input
+            }
+
+        } while (!check(nb));
+
+        return nb;
+
+    }
+
+    public static boolean check(int nb) {
+        return nb >= 1 && nb <= 100;
     }
 
     public static int randomNumber() {
         return (int) (Math.random() * 100) + 1;
-    }
-
-    public static int getUserNumber() {
-        int nb = UserNumberCheck.getNumber();
-        return nb;
     }
 
 }

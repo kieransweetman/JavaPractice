@@ -17,11 +17,7 @@ public class UserNumberCheck {
 
                 if (!check(nb)) {
                     System.out.println(nb + " is not a valid number");
-                    continue;
                 }
-
-                System.out.println("You entered: " + nb);
-                scanner.close();
 
             } catch (InputMismatchException e) {
                 System.out.println("Please enter a valid number");
@@ -30,17 +26,8 @@ public class UserNumberCheck {
 
         } while (!check(nb));
 
-    }
-
-    public static int getNumberFromUser() {
-        System.out.println("Enter a number between 1 and 10:");
-        return scanner.nextInt();
-    }
-
-    // num 1-100
-    public static int getNumber() {
-        System.out.println("Enter a number between 1 and 100:");
-        return scanner.nextInt();
+        scanner.close();
+        System.out.println("You entered: " + nb);
 
     }
 

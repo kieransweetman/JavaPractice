@@ -3,8 +3,6 @@ package fr.algo;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import fr.algo.UserNumberCheck;
-
 public class NextTen {
 
     public static Scanner scanner = new Scanner(System.in);

@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class UserNumberCheck {
 
-    public static void main(String[] args) {
+    public static Scanner scanner = new Scanner(System.in);
+    public static int nb = 0;
 
-        Scanner scanner = new Scanner(System.in);
-        int nb = 0;
+    public static void main(String[] args) {
 
         do {
             try {
@@ -29,6 +29,19 @@ public class UserNumberCheck {
             }
 
         } while (!check(nb));
+
+    }
+
+    public static int getNumberFromUser() {
+        System.out.println("Enter a number between 1 and 10:");
+        return scanner.nextInt();
+    }
+
+    // num 1-100
+    public static int getNumber() {
+        System.out.println("Enter a number between 1 and 100:");
+        return scanner.nextInt();
+
     }
 
     public static boolean check(int nb) {

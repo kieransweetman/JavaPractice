@@ -20,10 +20,22 @@ public class TableComparison {
 
     public static int commonNumbers() {
         int count = 0;
+        boolean[] counted1 = new boolean[array.length];
+        boolean[] counted2 = new boolean[array2.length];
+
         for (int i = 0; i < array.length; i++) {
+
+            if (counted1[i])
+                continue;
+
             for (int j = 0; j < array2.length; j++) {
+                if (counted2[j])
+                    continue;
                 if (array[i] == array2[j]) {
                     count++;
+                    counted1[i] = true;
+                    counted2[j] = true;
+                    break;
                 }
             }
         }

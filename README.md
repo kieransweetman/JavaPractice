@@ -1,4 +1,4 @@
-# Imperative Java lab:
+# Imperative Java lab
 
 The following packages are an ensemble of practice and exercises to get used to writing and manipulating data structures in java.
 

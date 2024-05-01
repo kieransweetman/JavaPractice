@@ -2,7 +2,7 @@ package fr.algo;
 
 import java.util.Random;
 import java.util.Scanner;
-f
+
 public class TwentyOne {
     public static int player = 0;
     public static int cpu = 0;
@@ -33,12 +33,10 @@ public class TwentyOne {
         moves[0] = 1;
         while (!winner) {
             playRound();
-
             if (getRoundSum() == MAX_SUM) {
                 winner = true;
                 break;
             }
-
             printRoundResults();
 
         }
@@ -67,14 +65,11 @@ public class TwentyOne {
 
     // set moves and return the move based on whos turn it is
     public static int determineMoveAndUpdateScore() {
-        int lastMove = moves[round];
         int move = 0;
         if (nextPlayer == 1) {
             move = getPlayerMove();
-            player = move + lastMove;
         } else {
             move = getCPUMove();
-            cpu = move + lastMove;
         }
 
         return move;
@@ -82,11 +77,12 @@ public class TwentyOne {
 
     public static void printRoundResults() {
         boolean isPlayersMove = nextPlayer == 1;
+        int lastMove = moves[round - 1];
 
         if (nextPlayer == 0) {
-            System.out.println("player 1  played: " + moves[round - 1]);
+            System.out.println("player 1 played: " + lastMove);
         } else {
-            System.out.println("cpu  played: " + moves[round - 1]);
+            System.out.println("cpu played: " + lastMove);
         }
 
         System.out.println("\n---\n");
@@ -96,11 +92,14 @@ public class TwentyOne {
     }
 
     public static void printWinner() {
-        System.out.println(player + " : " + cpu);
-        if (player == MAX_SUM) {
-            System.out.println("You lost 😩");
+        int lastSum = getRoundSum() - moves[round - 1];
+        String finalMessage = "the last sum was: " + lastSum + " + " + moves[round - 1] + " = " + getRoundSum() + "\n";
+
+        if (nextPlayer == 0) {
+            System.out.println("You lost 😩, " + finalMessage);
         } else {
-            System.out.println("you won! 😏🥳");
+            System.out.println("you beat the computer and won! 😏, " + finalMessage);
+            System.out.println("");
         }
 
     }
@@ -108,9 +107,15 @@ public class TwentyOne {
     public static int getCPUMove() {
         Random random = new Random();
         int move = random.nextInt(3) + 1;
-        if (getRoundSum() + move > MAX_SUM) {
-            move = random.nextInt(2) + 1;
+
+        while (getRoundSum() + move > MAX_SUM) {
+            move = random.nextInt(3) + 1;
+
+            if (getRoundSum() + move <= MAX_SUM) {
+                break;
+            }
         }
+
         nextPlayer = 1;
         return move;
     }

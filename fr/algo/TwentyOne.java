@@ -95,13 +95,13 @@ public class TwentyOne {
         int lastSum = getRoundSum() - moves[round - 1];
         String finalMessage = "the last sum was: " + lastSum + " + " + moves[round - 1] + " = " + getRoundSum() + "\n";
 
+        System.out.println("\n---\n");
         if (nextPlayer == 0) {
             System.out.println("You lost 😩, " + finalMessage);
         } else {
             System.out.println("you beat the computer and won! 😏, " + finalMessage);
-            System.out.println("");
         }
-
+        System.out.println("---\n");
     }
 
     public static int getCPUMove() {
@@ -142,7 +142,7 @@ public class TwentyOne {
 
             } catch (Exception e) {
                 System.out.println("Please enter a valid number");
-                scanner.next(); // Clear the invalid input
+                scanner.nextLine(); // Clear the invalid input
                 continue;
             }
 
